@@ -26,7 +26,7 @@ post('/login') do
     session[:id] = id
     redirect('/titles')
   else
-    "FEL DU HAR FEL LÖSEN"
+    redirect("https://www.youtube.com/watch?v=xvFZjo5PgG0")
   end
 end
 
@@ -37,6 +37,18 @@ get('/titles') do
   result = db.execute("SELECT * FROM titles WHERE user_id = ?", id)
   p "Alla titlar från result #{result}"
   slim(:"titles/index", locals:{titles:result})
+end
+
+get('/titles/new') do
+    slim(:"titles/new")
+end
+
+post ('/titles/new') do
+    title = params[:title]
+    producer_id = params[:producer_id].to_i
+    db = SQLite3::Database.new("db/imdb.db")
+    db.execute("INSERT INTO titles (name, producer_id) VALUES (?,?)",title,producer_id)
+    redirect('/titles')
 end
 
 post('/users/new') do

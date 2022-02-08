@@ -2,13 +2,16 @@
 html lang="en"
   head
     meta charset="UTF-8"/
-    meta name="viewport" content="width=device-width, initial-scale=1.0"/
-    link rel="stylesheet" href="/css/style.css"/
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    base href="/"/
+    link rel="stylesheet" href="./public/css/style.css"/
     title Document
   body
     nav
       a href="/" Register
       a href="/showlogin" Login
+      a href="/titles" Movies 
+      a href="/titles/new" Create new movie
     h1 Welcome to IMDB!
 
     == yield
