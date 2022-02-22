@@ -6,6 +6,10 @@ require 'bcrypt'
 enable :sessions 
 
 get('/') do
+  slim(:login)
+end
+
+get('/register') do
   slim(:register)
 end
 
@@ -35,7 +39,6 @@ get('/titles') do
   db = SQLite3::Database.new('db/imdb.db')
   db.results_as_hash = true
   result = db.execute("SELECT * FROM titles WHERE user_id = ?", id)
-  p "Alla titlar från result #{result}"
   slim(:"titles/index", locals:{titles:result})
 end
 
@@ -43,7 +46,7 @@ get('/titles/new') do
     slim(:"titles/new")
 end
 
-post ('/titles/new') do
+post('/titles/new') do
     title = params[:title]
     producer_id = params[:producer_id].to_i
     db = SQLite3::Database.new("db/imdb.db")
@@ -56,7 +59,7 @@ post('/users/new') do
   password = params[:password]
   password_confirm = params[:password_confirm]
 
-  if password == password_confirm
+  if password == password_confirm && username.length <= 12
     password_digest = BCrypt::Password.create(password)
     db = SQLite3::Database.new('db/imdb.db')
     db.execute("INSERT INTO users (username,pwdigest) VALUES (?,?)",username,password_digest)
@@ -64,6 +67,6 @@ post('/users/new') do
 
   else 
 
-    "lösenorden matchade inte"
+    "Användarnamnet är för långt/Lösenorden matchade inte."
   end
 end

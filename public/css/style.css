@@ -1,12 +1,16 @@
+body {
+  background-color: midnightblue
+}
+
 nav {
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight:800;
-    background: lightsalmon;
-    height: 10vh;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-  }
+  background-color: slategray;
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
