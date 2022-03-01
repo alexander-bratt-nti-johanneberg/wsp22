@@ -17,12 +17,20 @@ get('/showlogin') do
   slim(:login)
 end
 
+get('/logout') do
+  session[:id] = nil
+  redirect('/')
+end
+
 post('/login') do
   username = params[:username]
   password = params[:password]
   db = SQLite3::Database.new('db/imdb.db')
   db.results_as_hash = true
   result = db.execute("SELECT * FROM users WHERE username = ?",username).first
+  if result == nil
+    redirect("https://www.youtube.com/watch?v=xvFZjo5PgG0")
+  end
   pwdigest = result["pwdigest"]
   id = result["id"]
   
@@ -49,8 +57,10 @@ end
 post('/titles/new') do
     title = params[:title]
     producer_id = params[:producer_id].to_i
+    genre_id = params[:genre_id].to_i
+    user_id = session[:id]
     db = SQLite3::Database.new("db/imdb.db")
-    db.execute("INSERT INTO titles (name, producer_id) VALUES (?,?)",title,producer_id)
+    db.execute("INSERT INTO titles (name, producer_id, genre_id, user_id) VALUES (?,?,?,?)",title,producer_id,genre_id,user_id)
     redirect('/titles')
 end
 
@@ -69,4 +79,38 @@ post('/users/new') do
 
     "Användarnamnet är för långt/Lösenorden matchade inte."
   end
+end
+
+
+get('/titles/:id/edit') do
+  id = params[:id].to_i
+  db = SQLite3::Database.new("db/imdb.db")
+  db.results_as_hash = true
+  result = db.execute("SELECT * FROM titles WHERE id = ?", id).first
+  slim(:"/titles/edit", locals:{result:result})
+end
+
+post('/titles/:id/update') do
+  id = params[:id].to_i
+  title = params[:title]
+  producer_id = params[:ProducerId]
+  db = SQLite3::Database.new("db/imdb.db")
+  db.execute("UPDATE titles SET name = ?, producer_id = ? WHERE id = ?", title, id, producer_id)
+  redirect('/titles')
+end
+
+get('/titles/:id') do
+  id = params[:id].to_i
+  db = SQLite3::Database.new("db/imdb.db")
+  db.results_as_hash = true
+  result = db.execute("SELECT * FROM titles WHERE id = ?",id).first
+  result2 = db.execute("SELECT producer_name FROM producers WHERE id IN (SELECT producer_id FROM titles WHERE id = ?)",id).first
+  slim(:"titles/show",locals:{result:result,result2:result2})
+end
+
+get('/titles/:id/rate') do
+  id = params[:id].to_i
+  db = SQLite3::Database.new("db/imdb.db")
+  db.results_as_hash = true
+  slim(:"titles/rate",locals:{result:result})
 end

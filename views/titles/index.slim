@@ -3,7 +3,7 @@ ol
   - titles.each do |title|
     li 
       a href="titles/#{title['id']}" #{title["name"]}
-      a href="titles/#{title['id']}/edit" Ändra
-      
+      a href="titles/#{title['id']}/rate" Rate
+      a href="titles/#{title['id']}/edit" Edit
       form method="POST" action="titles/#{title['Id']}/delete"
         input type="submit" value="Delete"

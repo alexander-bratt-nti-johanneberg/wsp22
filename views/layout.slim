@@ -9,9 +9,12 @@ html lang="en"
   body
     nav
       a href="/register" Register
-      a href="/showlogin" Login
+      -if session[:id] == nil
+        a href="/showlogin" Login
+      -else 
+        a href="/logout" Logout
       a href="/titles" Movies 
       a href="/titles/new" Create new movie
     h1 Welcome to IMDB!
-
+    
     == yield
