@@ -14,7 +14,8 @@ html lang="en"
       -else 
         a href="/logout" Logout
       a href="/titles" Movies 
-      a href="/titles/new" Create new movie
+      -if not session[:id] == nil
+        a href="/titles/new" Create new movie
     h1 Welcome to IMDB!
     
     == yield

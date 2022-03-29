@@ -64,6 +64,13 @@ post('/titles/new') do
     redirect('/titles')
 end
 
+post('/titles/:id/delete') do
+  id = params[:id].to_i
+  db = SQLite3::Database.new("db/imdb.db")
+  db.execute("DELETE FROM titles WHERE id = ?",id)
+  redirect('/titles')
+end
+
 post('/users/new') do
   username = params[:username]
   password = params[:password]
@@ -112,5 +119,7 @@ get('/titles/:id/rate') do
   id = params[:id].to_i
   db = SQLite3::Database.new("db/imdb.db")
   db.results_as_hash = true
+  result = db.execute("SELECT * FROM titles WHERE id = ?", id).first
   slim(:"titles/rate",locals:{result:result})
 end
+
