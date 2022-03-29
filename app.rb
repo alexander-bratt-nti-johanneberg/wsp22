@@ -118,6 +118,7 @@ end
 get('/titles/:id/rate') do
   id = params[:id].to_i
   db = SQLite3::Database.new("db/imdb.db")
+  user_id = session[:id]
   db.results_as_hash = true
   result = db.execute("SELECT * FROM titles WHERE id = ?", id).first
   slim(:"titles/rate",locals:{result:result})
