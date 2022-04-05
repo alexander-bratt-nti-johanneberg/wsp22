@@ -33,9 +33,11 @@ post('/login') do
   end
   pwdigest = result["pwdigest"]
   id = result["id"]
+  auth = result["authority"]
   
   if BCrypt::Password.new(pwdigest) == password
     session[:id] = id
+    session[:auth] = auth
     redirect('/titles')
   else
     redirect("https://www.youtube.com/watch?v=xvFZjo5PgG0")
@@ -46,7 +48,7 @@ get('/titles') do
   id = session[:id].to_i
   db = SQLite3::Database.new('db/imdb.db')
   db.results_as_hash = true
-  result = db.execute("SELECT * FROM titles WHERE user_id = ?", id)
+  result = db.execute("SELECT * FROM titles")
   slim(:"titles/index", locals:{titles:result})
 end
 
@@ -78,8 +80,9 @@ post('/users/new') do
 
   if password == password_confirm && username.length <= 12
     password_digest = BCrypt::Password.create(password)
+    authority = 1
     db = SQLite3::Database.new('db/imdb.db')
-    db.execute("INSERT INTO users (username,pwdigest) VALUES (?,?)",username,password_digest)
+    db.execute("INSERT INTO users (username,pwdigest,authority) VALUES (?,?,?)",username,password_digest,authority)
     redirect('/')
 
   else 
@@ -107,12 +110,13 @@ post('/titles/:id/update') do
 end
 
 get('/titles/:id') do
-  id = params[:id].to_i
+  id = params[:id]
   db = SQLite3::Database.new("db/imdb.db")
   db.results_as_hash = true
   result = db.execute("SELECT * FROM titles WHERE id = ?",id).first
   result2 = db.execute("SELECT producer_name FROM producers WHERE id IN (SELECT producer_id FROM titles WHERE id = ?)",id).first
-  slim(:"titles/show",locals:{result:result,result2:result2})
+  result3 = db.execute("SELECT rating FROM users_titles WHERE title_id = ?", id).first
+  slim(:"titles/show",locals:{result:result,result2:result2,result3:result3})
 end
 
 get('/titles/:id/rate') do
@@ -124,3 +128,11 @@ get('/titles/:id/rate') do
   slim(:"titles/rate",locals:{result:result})
 end
 
+post('/titles/:id/rated') do
+  title_id = params[:id].to_i
+  rating = params[:rating].to_i
+  user_id = session[:id]
+  db = SQLite3::Database.new("db/imdb.db")
+  db.execute("INSERT INTO users_titles (user_id,title_id,rating) VALUES (?,?,?)", user_id,title_id,rating).first
+  redirect('/titles')
+end

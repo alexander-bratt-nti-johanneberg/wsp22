@@ -1,5 +1,6 @@
 
-ol
+-if session[:auth] == 2
+  ol
   - titles.each do |title|
     li 
       a href="titles/#{title['id']}" #{title["name"]}
@@ -7,3 +8,14 @@ ol
       a href="titles/#{title['id']}/edit" Edit
       form method="POST" action="titles/#{title['id']}/delete"
         input type="submit" value="Delete"
+-elsif session[:auth] == 1 && session[:id] != nil
+  ol
+  - titles.each do |title|
+    li 
+      a href="titles/#{title['id']}" #{title["name"]}
+      a href="titles/#{title['id']}/rate" Rate
+-elsif session[:id] == nil
+  ol
+  - titles.each do |title|
+    li 
+      a href="titles/#{title['id']}" #{title["name"]}

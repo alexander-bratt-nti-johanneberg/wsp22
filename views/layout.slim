@@ -14,7 +14,7 @@ html lang="en"
       -else 
         a href="/logout" Logout
       a href="/titles" Movies 
-      -if not session[:id] == nil
+      -if session[:id] != nil && session[:auth] == 2
         a href="/titles/new" Create new movie
     h1 Welcome to IMDB!
     
