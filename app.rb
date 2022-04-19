@@ -2,8 +2,14 @@ require 'sinatra'
 require 'slim'
 require 'sqlite3'
 require 'bcrypt'
-
+#require_relative './model.rb'
 enable :sessions 
+
+def connect_to_db()
+  db = SQLite3::Database.new('db/imdb.db')
+  db.results_as_hash = true
+  return db
+end
 
 get('/') do
   slim(:login)
@@ -25,15 +31,14 @@ end
 post('/login') do
   username = params[:username]
   password = params[:password]
-  db = SQLite3::Database.new('db/imdb.db')
-  db.results_as_hash = true
+  db = connect_to_db()
   result = db.execute("SELECT * FROM users WHERE username = ?",username).first
   if result == nil
     redirect("https://www.youtube.com/watch?v=xvFZjo5PgG0")
   end
   pwdigest = result["pwdigest"]
   id = result["id"]
-  auth = result["authority"]
+  auth = result["authorization"]
   
   if BCrypt::Password.new(pwdigest) == password
     session[:id] = id
@@ -46,8 +51,7 @@ end
 
 get('/titles') do
   id = session[:id].to_i
-  db = SQLite3::Database.new('db/imdb.db')
-  db.results_as_hash = true
+  db = connect_to_db()
   result = db.execute("SELECT * FROM titles")
   slim(:"titles/index", locals:{titles:result})
 end
@@ -57,18 +61,18 @@ get('/titles/new') do
 end
 
 post('/titles/new') do
-    title = params[:title]
-    producer_id = params[:producer_id].to_i
-    genre_id = params[:genre_id].to_i
-    user_id = session[:id]
-    db = SQLite3::Database.new("db/imdb.db")
-    db.execute("INSERT INTO titles (name, producer_id, genre_id, user_id) VALUES (?,?,?,?)",title,producer_id,genre_id,user_id)
-    redirect('/titles')
+  producer_id = params[:producer_id].to_i
+  title = params[:title]
+  genre_id = params[:genre_id].to_i
+  user_id = session[:id]
+  db = connect_to_db()
+  db.execute("INSERT INTO titles (name, producer_id, genre_id, user_id) VALUES (?,?,?,?)",title,producer_id,genre_id,user_id)
+  redirect('/titles')
 end
 
 post('/titles/:id/delete') do
   id = params[:id].to_i
-  db = SQLite3::Database.new("db/imdb.db")
+  db = connect_to_db()
   db.execute("DELETE FROM titles WHERE id = ?",id)
   redirect('/titles')
 end
@@ -80,9 +84,9 @@ post('/users/new') do
 
   if password == password_confirm && username.length <= 12
     password_digest = BCrypt::Password.create(password)
-    authority = 1
-    db = SQLite3::Database.new('db/imdb.db')
-    db.execute("INSERT INTO users (username,pwdigest,authority) VALUES (?,?,?)",username,password_digest,authority)
+    authorization = 1
+    db = connect_to_db()
+    db.execute("INSERT INTO users (username,pwdigest,authorization) VALUES (?,?,?)",username,password_digest,authorization)
     redirect('/')
 
   else 
@@ -94,8 +98,7 @@ end
 
 get('/titles/:id/edit') do
   id = params[:id].to_i
-  db = SQLite3::Database.new("db/imdb.db")
-  db.results_as_hash = true
+  db = connect_to_db()
   result = db.execute("SELECT * FROM titles WHERE id = ?", id).first
   slim(:"/titles/edit", locals:{result:result})
 end
@@ -104,26 +107,24 @@ post('/titles/:id/update') do
   id = params[:id].to_i
   title = params[:title]
   producer_id = params[:ProducerId]
-  db = SQLite3::Database.new("db/imdb.db")
+  db = connect_to_db()
   db.execute("UPDATE titles SET name = ?, producer_id = ? WHERE id = ?", title, id, producer_id)
   redirect('/titles')
 end
 
 get('/titles/:id') do
   id = params[:id]
-  db = SQLite3::Database.new("db/imdb.db")
-  db.results_as_hash = true
+  db = connect_to_db()
   result = db.execute("SELECT * FROM titles WHERE id = ?",id).first
   result2 = db.execute("SELECT producer_name FROM producers WHERE id IN (SELECT producer_id FROM titles WHERE id = ?)",id).first
-  result3 = db.execute("SELECT rating FROM users_titles WHERE title_id = ?", id).first
+  result3 = db.execute("SELECT AVG(rating) FROM users_titles WHERE title_id = ?", id).first
   slim(:"titles/show",locals:{result:result,result2:result2,result3:result3})
 end
 
 get('/titles/:id/rate') do
   id = params[:id].to_i
-  db = SQLite3::Database.new("db/imdb.db")
+  db = connect_to_db()
   user_id = session[:id]
-  db.results_as_hash = true
   result = db.execute("SELECT * FROM titles WHERE id = ?", id).first
   slim(:"titles/rate",locals:{result:result})
 end
@@ -132,7 +133,7 @@ post('/titles/:id/rated') do
   title_id = params[:id].to_i
   rating = params[:rating].to_i
   user_id = session[:id]
-  db = SQLite3::Database.new("db/imdb.db")
+  db = connect_to_db()
   db.execute("INSERT INTO users_titles (user_id,title_id,rating) VALUES (?,?,?)", user_id,title_id,rating).first
   redirect('/titles')
 end
