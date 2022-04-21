@@ -2,17 +2,11 @@ require 'sinatra'
 require 'slim'
 require 'sqlite3'
 require 'bcrypt'
-#require_relative './model.rb'
+require_relative './model.rb'
 enable :sessions 
 
-def connect_to_db()
-  db = SQLite3::Database.new('db/imdb.db')
-  db.results_as_hash = true
-  return db
-end
-
 get('/') do
-  slim(:login)
+  redirect('/titles')
 end
 
 get('/register') do
@@ -31,28 +25,13 @@ end
 post('/login') do
   username = params[:username]
   password = params[:password]
-  db = connect_to_db()
-  result = db.execute("SELECT * FROM users WHERE username = ?",username).first
-  if result == nil
-    redirect("https://www.youtube.com/watch?v=xvFZjo5PgG0")
-  end
-  pwdigest = result["pwdigest"]
-  id = result["id"]
-  auth = result["authorization"]
-  
-  if BCrypt::Password.new(pwdigest) == password
-    session[:id] = id
-    session[:auth] = auth
-    redirect('/titles')
-  else
-    redirect("https://www.youtube.com/watch?v=xvFZjo5PgG0")
-  end
+  login_user(username,password)
 end
 
 get('/titles') do
   id = session[:id].to_i
   db = connect_to_db()
-  result = db.execute("SELECT * FROM titles")
+  result = fetch_all_movies()
   slim(:"titles/index", locals:{titles:result})
 end
 
@@ -65,41 +44,25 @@ post('/titles/new') do
   title = params[:title]
   genre_id = params[:genre_id].to_i
   user_id = session[:id]
-  db = connect_to_db()
-  db.execute("INSERT INTO titles (name, producer_id, genre_id, user_id) VALUES (?,?,?,?)",title,producer_id,genre_id,user_id)
-  redirect('/titles')
+  create_new_movie(producer_id, title, genre_id, user_id)
 end
 
 post('/titles/:id/delete') do
   id = params[:id].to_i
-  db = connect_to_db()
-  db.execute("DELETE FROM titles WHERE id = ?",id)
-  redirect('/titles')
+  delete_movie(id)
 end
 
 post('/users/new') do
   username = params[:username]
   password = params[:password]
   password_confirm = params[:password_confirm]
-
-  if password == password_confirm && username.length <= 12
-    password_digest = BCrypt::Password.create(password)
-    authorization = 1
-    db = connect_to_db()
-    db.execute("INSERT INTO users (username,pwdigest,authorization) VALUES (?,?,?)",username,password_digest,authorization)
-    redirect('/')
-
-  else 
-
-    "Användarnamnet är för långt/Lösenorden matchade inte."
-  end
+  register_user(username, password, password_confirm)
 end
 
 
 get('/titles/:id/edit') do
   id = params[:id].to_i
-  db = connect_to_db()
-  result = db.execute("SELECT * FROM titles WHERE id = ?", id).first
+  result = goto_edit_movie(id)
   slim(:"/titles/edit", locals:{result:result})
 end
 
@@ -107,25 +70,22 @@ post('/titles/:id/update') do
   id = params[:id].to_i
   title = params[:title]
   producer_id = params[:ProducerId]
-  db = connect_to_db()
-  db.execute("UPDATE titles SET name = ?, producer_id = ? WHERE id = ?", title, id, producer_id)
-  redirect('/titles')
+  edit_movie(id, title, producer_id)
 end
 
 get('/titles/:id') do
   id = params[:id]
   db = connect_to_db()
-  result = db.execute("SELECT * FROM titles WHERE id = ?",id).first
-  result2 = db.execute("SELECT producer_name FROM producers WHERE id IN (SELECT producer_id FROM titles WHERE id = ?)",id).first
-  result3 = db.execute("SELECT AVG(rating) FROM users_titles WHERE title_id = ?", id).first
-  slim(:"titles/show",locals:{result:result,result2:result2,result3:result3})
+  result = fetch_movie(id)
+  producer = fetch_producer(id)
+  rating = fetch_rating(id)
+  slim(:"titles/show",locals:{result:result,producer:producer,rating:rating})
 end
 
 get('/titles/:id/rate') do
   id = params[:id].to_i
-  db = connect_to_db()
   user_id = session[:id]
-  result = db.execute("SELECT * FROM titles WHERE id = ?", id).first
+  result = goto_rate_movie(id)
   slim(:"titles/rate",locals:{result:result})
 end
 
@@ -133,7 +93,5 @@ post('/titles/:id/rated') do
   title_id = params[:id].to_i
   rating = params[:rating].to_i
   user_id = session[:id]
-  db = connect_to_db()
-  db.execute("INSERT INTO users_titles (user_id,title_id,rating) VALUES (?,?,?)", user_id,title_id,rating).first
-  redirect('/titles')
+  rate_movie(title_id, rating, user_id)
 end

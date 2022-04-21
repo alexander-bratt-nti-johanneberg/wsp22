@@ -1,5 +1,7 @@
 
 p Filmen som du har sökt efter heter #{result["name"]}.
-p Filmproducenten heter #{result2["producer_name"]}.
--if result3 != nil
-    p Filmen har betyget #{result3["AVG(rating)"].round(2)}/10.
+p Filmproducenten heter #{producer["producer_name"]}.
+-if rating["AVG(rating)"] != nil
+    p Filmen har betyget #{rating["AVG(rating)"].round(2)}/10.
+-else 
+    p Filmen är inte betygsatt ännu!
