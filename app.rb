@@ -3,10 +3,40 @@ require 'slim'
 require 'sqlite3'
 require 'bcrypt'
 require_relative './model.rb'
+include Model
 enable :sessions 
 
+
+before ('/titles/:id/rate') do
+  if session[:id] == nil
+    redirect('/error')
+  end
+end
+
+before ('/titles/:id/edit') do
+  if session[:id] == nil || session[:auth] != 2
+    redirect('/error')
+  end
+end
+
+before ('/titles/:id/delete') do
+  if session[:id] == nil || session[:auth] != 2
+    redirect('/error')
+  end
+end
+
+before ('/titles/new') do
+  if session[:id] == nil
+    redirect('/error')
+  end
+end
+
+get('/error') do 
+  slim(:error)
+end
+
 get('/') do
-  redirect('/titles')
+  redirect('/showlogin')
 end
 
 get('/register') do
@@ -19,6 +49,7 @@ end
 
 get('/logout') do
   session[:id] = nil
+  session[:auth] = nil
   redirect('/')
 end
 
@@ -30,7 +61,6 @@ end
 
 get('/titles') do
   id = session[:id].to_i
-  db = connect_to_db()
   result = fetch_all_movies()
   slim(:"titles/index", locals:{titles:result})
 end
@@ -75,7 +105,6 @@ end
 
 get('/titles/:id') do
   id = params[:id]
-  db = connect_to_db()
   result = fetch_movie(id)
   producer = fetch_producer(id)
   rating = fetch_rating(id)
