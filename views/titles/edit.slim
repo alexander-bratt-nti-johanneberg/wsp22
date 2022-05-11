@@ -9,6 +9,13 @@ p 2 asofak
 
 form action="/titles/#{result['id']}/update" method="post"
     input type="text" name="title" placeholder="Title" value="#{result['title']}"
-    input type="text" name="ProducerId" placeholder="Producer Id" value="#{result['ProducerId']}"
-    input type="text" name="GenreId" placeholder="Genre Id" value="#{result['GenreId']}"
+        select id="ProducerId" name="ProducerId"
+            option value="1" Quention Tarantino
+            option value="2" Hej
+            option value="3" yo
+            option value="4" x
+        select id="GenreId" name="GenreId"
+            option value="1" Action
+            option value="2" Comedy
+            option value="3" Drama
     input type="submit" value="Edit!" 

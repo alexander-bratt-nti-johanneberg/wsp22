@@ -1,5 +1,6 @@
 
 p Filmen som du har sökt efter heter #{result["name"]}.
+p Filmen har genret #{genre["genre_name"]}
 p Filmproducenten heter #{producer["producer_name"]}.
 -if rating["AVG(rating)"] != nil
     p Filmen har betyget #{rating["AVG(rating)"].round(2)}/10.
