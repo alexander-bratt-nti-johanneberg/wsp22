@@ -3,9 +3,10 @@ require 'slim'
 require 'sqlite3'
 require 'bcrypt'
 require_relative './model.rb'
-include Model
+
 enable :sessions 
 
+include Model
 #Checks if user has permission to access paths
 before do 
   if session[:id] == nil && (request.path_info != '/' && request.path_info != '/titles' && request.path_info != '/error' && request.path_info != '/showlogin' && request.path_info != '/register' && request.path_info !='/login')

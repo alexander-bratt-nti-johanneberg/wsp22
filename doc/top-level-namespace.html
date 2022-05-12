@@ -75,7 +75,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd>Model</dd>
+      <dd><span class='object_link'><a href="Model.html" title="Model (module)">Model</a></span></dd>
   </dl>
   
   
@@ -85,6 +85,16 @@
   
 </div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Model.html" title="Model (module)">Model</a></span>
+    
+  
+    
+  
+</p>
 
 
 
@@ -475,6 +485,16 @@
 
 
   
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Model.html" title="Model (module)">Model</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Model.html#checkTime-instance_method" title="Model#checkTime (method)">#checkTime</a></span>, <span class='object_link'><a href="Model.html#check_owner-instance_method" title="Model#check_owner (method)">#check_owner</a></span>, <span class='object_link'><a href="Model.html#connect_to_db-instance_method" title="Model#connect_to_db (method)">#connect_to_db</a></span>, <span class='object_link'><a href="Model.html#create_new_movie-instance_method" title="Model#create_new_movie (method)">#create_new_movie</a></span>, <span class='object_link'><a href="Model.html#delete_movie-instance_method" title="Model#delete_movie (method)">#delete_movie</a></span>, <span class='object_link'><a href="Model.html#edit_movie-instance_method" title="Model#edit_movie (method)">#edit_movie</a></span>, <span class='object_link'><a href="Model.html#fetch_all_movies-instance_method" title="Model#fetch_all_movies (method)">#fetch_all_movies</a></span>, <span class='object_link'><a href="Model.html#fetch_genre-instance_method" title="Model#fetch_genre (method)">#fetch_genre</a></span>, <span class='object_link'><a href="Model.html#fetch_movie-instance_method" title="Model#fetch_movie (method)">#fetch_movie</a></span>, <span class='object_link'><a href="Model.html#fetch_producer-instance_method" title="Model#fetch_producer (method)">#fetch_producer</a></span>, <span class='object_link'><a href="Model.html#fetch_rating-instance_method" title="Model#fetch_rating (method)">#fetch_rating</a></span>, <span class='object_link'><a href="Model.html#goto_edit_movie-instance_method" title="Model#goto_edit_movie (method)">#goto_edit_movie</a></span>, <span class='object_link'><a href="Model.html#goto_rate_movie-instance_method" title="Model#goto_rate_movie (method)">#goto_rate_movie</a></span>, <span class='object_link'><a href="Model.html#login_user-instance_method" title="Model#login_user (method)">#login_user</a></span>, <span class='object_link'><a href="Model.html#rate_movie-instance_method" title="Model#rate_movie (method)">#rate_movie</a></span>, <span class='object_link'><a href="Model.html#register_user-instance_method" title="Model#register_user (method)">#register_user</a></span></p>
+
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -508,12 +528,12 @@
       <pre class="lines">
 
 
-22
 23
-24</pre>
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 23</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -551,12 +571,12 @@
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 18</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/error</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:error</span><span class='rparen'>)</span>
@@ -581,14 +601,14 @@
       <pre class="lines">
 
 
-40
 41
 42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 41</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/logout</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -628,12 +648,12 @@
       <pre class="lines">
 
 
-27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 28</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/register</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:register</span><span class='rparen'>)</span>
@@ -671,12 +691,12 @@
       <pre class="lines">
 
 
-32
 33
-34</pre>
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 33</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:login</span><span class='rparen'>)</span>
@@ -714,18 +734,18 @@
       <pre class="lines">
 
 
-77
 78
 79
 80
-81</pre>
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 78</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_all_movies'>fetch_all_movies</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_all_movies'><span class='object_link'><a href="Model.html#fetch_all_movies-instance_method" title="Model#fetch_all_movies (method)">fetch_all_movies</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;titles/index&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span><span class='lbrace'>{</span><span class='label'>titles:</span><span class='id identifier rubyid_result'>result</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -754,13 +774,13 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>Model#fetch_movie</li>
+      <li><span class='object_link'><a href="Model.html#fetch_movie-instance_method" title="Model#fetch_movie (method)">Model#fetch_movie</a></span></li>
     
-      <li>Model#fetch_genre</li>
+      <li><span class='object_link'><a href="Model.html#fetch_genre-instance_method" title="Model#fetch_genre (method)">Model#fetch_genre</a></span></li>
     
-      <li>Model#fetch_producer</li>
+      <li><span class='object_link'><a href="Model.html#fetch_producer-instance_method" title="Model#fetch_producer (method)">Model#fetch_producer</a></span></li>
     
-      <li>Model#fetch_rating</li>
+      <li><span class='object_link'><a href="Model.html#fetch_rating-instance_method" title="Model#fetch_rating (method)">Model#fetch_rating</a></span></li>
     
   </ul>
 
@@ -772,24 +792,24 @@
       <pre class="lines">
 
 
-201
 202
 203
 204
 205
 206
 207
-208</pre>
+208
+209</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 201</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 202</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_movie'>fetch_movie</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_genre'>genre</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_genre'>fetch_genre</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_producer'>producer</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_producer'>fetch_producer</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_rating'>rating</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_rating'>fetch_rating</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_movie'><span class='object_link'><a href="Model.html#fetch_movie-instance_method" title="Model#fetch_movie (method)">fetch_movie</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_genre'>genre</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_genre'><span class='object_link'><a href="Model.html#fetch_genre-instance_method" title="Model#fetch_genre (method)">fetch_genre</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_producer'>producer</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_producer'><span class='object_link'><a href="Model.html#fetch_producer-instance_method" title="Model#fetch_producer (method)">fetch_producer</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rating'>rating</span> <span class='op'>=</span> <span class='id identifier rubyid_fetch_rating'><span class='object_link'><a href="Model.html#fetch_rating-instance_method" title="Model#fetch_rating (method)">fetch_rating</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;titles/show&quot;</span><span class='comma'>,</span><span class='label'>locals:</span><span class='lbrace'>{</span><span class='label'>result:</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span><span class='label'>producer:</span><span class='id identifier rubyid_producer'>producer</span><span class='comma'>,</span><span class='label'>rating:</span><span class='id identifier rubyid_rating'>rating</span><span class='comma'>,</span><span class='label'>genre:</span><span class='id identifier rubyid_genre'>genre</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -818,7 +838,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>Model#goto_edit_movie</li>
+      <li><span class='object_link'><a href="Model.html#goto_edit_movie-instance_method" title="Model#goto_edit_movie (method)">Model#goto_edit_movie</a></span></li>
     
   </ul>
 
@@ -830,24 +850,24 @@
       <pre class="lines">
 
 
-164
 165
 166
 167
 168
 169
 170
-171</pre>
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 164</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 165</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/:id/edit</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>||</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:auth</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='int'>2</span>
     <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/error</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_goto_edit_movie'>goto_edit_movie</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_goto_edit_movie'><span class='object_link'><a href="Model.html#goto_edit_movie-instance_method" title="Model#goto_edit_movie (method)">goto_edit_movie</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;/titles/edit&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span><span class='lbrace'>{</span><span class='label'>result:</span><span class='id identifier rubyid_result'>result</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -883,7 +903,6 @@
       <pre class="lines">
 
 
-212
 213
 214
 215
@@ -891,10 +910,11 @@
 217
 218
 219
-220</pre>
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 212</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 213</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/:id/rate</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span>
@@ -902,7 +922,7 @@
   <span class='kw'>end</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_goto_rate_movie'>goto_rate_movie</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_goto_rate_movie'><span class='object_link'><a href="Model.html#goto_rate_movie-instance_method" title="Model#goto_rate_movie (method)">goto_rate_movie</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;titles/rate&quot;</span><span class='comma'>,</span><span class='label'>locals:</span><span class='lbrace'>{</span><span class='label'>result:</span><span class='id identifier rubyid_result'>result</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -938,12 +958,12 @@
       <pre class="lines">
 
 
-84
 85
-86</pre>
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 85</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;titles/new&quot;</span><span class='rparen'>)</span>
@@ -1017,7 +1037,6 @@
       <pre class="lines">
 
 
-51
 52
 53
 54
@@ -1040,24 +1059,25 @@
 71
 72
 73
-74</pre>
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 52</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span>
     <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_logTime'>logTime</span> <span class='op'>=</span>  <span class='id identifier rubyid_checkTime'>checkTime</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_logTime'>logTime</span> <span class='op'>=</span>  <span class='id identifier rubyid_checkTime'><span class='object_link'><a href="Model.html#checkTime-instance_method" title="Model#checkTime (method)">checkTime</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   
   <span class='kw'>if</span> <span class='id identifier rubyid_logTime'>logTime</span>
 
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:password</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_loginResult'>loginResult</span> <span class='op'>=</span> <span class='id identifier rubyid_login_user'>login_user</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_loginResult'>loginResult</span> <span class='op'>=</span> <span class='id identifier rubyid_login_user'><span class='object_link'><a href="Model.html#login_user-instance_method" title="Model#login_user (method)">login_user</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_loginResult'>loginResult</span><span class='lbracket'>[</span><span class='symbol'>:status</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
       <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_loginResult'>loginResult</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
       <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:auth</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_loginResult'>loginResult</span><span class='lbracket'>[</span><span class='symbol'>:auth</span><span class='rbracket'>]</span>
@@ -1102,7 +1122,6 @@
       <pre class="lines">
 
 
-95
 96
 97
 98
@@ -1114,17 +1133,18 @@
 104
 105
 106
-107</pre>
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 96</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_producer_id'>producer_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:producer_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_title'>title</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_genre_id'>genre_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:genre_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_create_new_movieResult'>create_new_movieResult</span> <span class='op'>=</span> <span class='id identifier rubyid_create_new_movie'>create_new_movie</span><span class='lparen'>(</span><span class='id identifier rubyid_producer_id'>producer_id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_genre_id'>genre_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_create_new_movieResult'>create_new_movieResult</span> <span class='op'>=</span> <span class='id identifier rubyid_create_new_movie'><span class='object_link'><a href="Model.html#create_new_movie-instance_method" title="Model#create_new_movie (method)">create_new_movie</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_producer_id'>producer_id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_genre_id'>genre_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_create_new_movieResult'>create_new_movieResult</span><span class='lbracket'>[</span><span class='symbol'>:status</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
     <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1158,9 +1178,9 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>Model#check_owner</li>
+      <li><span class='object_link'><a href="Model.html#check_owner-instance_method" title="Model#check_owner (method)">Model#check_owner</a></span></li>
     
-      <li>Model#delete_movie</li>
+      <li><span class='object_link'><a href="Model.html#delete_movie-instance_method" title="Model#delete_movie (method)">Model#delete_movie</a></span></li>
     
   </ul>
 
@@ -1172,7 +1192,6 @@
       <pre class="lines">
 
 
-115
 116
 117
 118
@@ -1184,19 +1203,20 @@
 124
 125
 126
-127</pre>
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 116</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/:id/delete</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>||</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:auth</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='int'>2</span>
     <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/error</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-  <span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_check_owner'>check_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_check_owner'><span class='object_link'><a href="Model.html#check_owner-instance_method" title="Model#check_owner (method)">check_owner</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_owner'>owner</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_delete_movie'>delete_movie</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_delete_movie'><span class='object_link'><a href="Model.html#delete_movie-instance_method" title="Model#delete_movie (method)">delete_movie</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Du äger inte den här filmen!</span><span class='tstring_end'>&quot;</span></span>
@@ -1264,7 +1284,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>Model#rate_movie</li>
+      <li><span class='object_link'><a href="Model.html#rate_movie-instance_method" title="Model#rate_movie (method)">Model#rate_movie</a></span></li>
     
   </ul>
 
@@ -1276,7 +1296,6 @@
       <pre class="lines">
 
 
-228
 229
 230
 231
@@ -1286,16 +1305,17 @@
 235
 236
 237
-238</pre>
+238
+239</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 228</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 229</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/:id/rated</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_title_id'>title_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_rating'>rating</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:rating</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_rate_movieResult'>rate_movieResult</span> <span class='op'>=</span> <span class='id identifier rubyid_rate_movie'>rate_movie</span><span class='lparen'>(</span><span class='id identifier rubyid_title_id'>title_id</span><span class='comma'>,</span> <span class='id identifier rubyid_rating'>rating</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rate_movieResult'>rate_movieResult</span> <span class='op'>=</span> <span class='id identifier rubyid_rate_movie'><span class='object_link'><a href="Model.html#rate_movie-instance_method" title="Model#rate_movie (method)">rate_movie</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_title_id'>title_id</span><span class='comma'>,</span> <span class='id identifier rubyid_rating'>rating</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_rate_movieResult'>rate_movieResult</span><span class='lbracket'>[</span><span class='symbol'>:status</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
     <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
@@ -1328,7 +1348,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>Model#edit_movie</li>
+      <li><span class='object_link'><a href="Model.html#edit_movie-instance_method" title="Model#edit_movie (method)">Model#edit_movie</a></span></li>
     
   </ul>
 
@@ -1340,7 +1360,6 @@
       <pre class="lines">
 
 
-181
 182
 183
 184
@@ -1351,17 +1370,18 @@
 189
 190
 191
-192</pre>
+192
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 182</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles/:id/update</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_title'>title</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_producer_id'>producer_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ProducerId</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_genre_id'>genre_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:GenreId</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_edit_movieResult'>edit_movieResult</span> <span class='op'>=</span> <span class='id identifier rubyid_edit_movie'>edit_movie</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_producer_id'>producer_id</span><span class='comma'>,</span> <span class='id identifier rubyid_genre_id'>genre_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_edit_movieResult'>edit_movieResult</span> <span class='op'>=</span> <span class='id identifier rubyid_edit_movie'><span class='object_link'><a href="Model.html#edit_movie-instance_method" title="Model#edit_movie (method)">edit_movie</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_producer_id'>producer_id</span><span class='comma'>,</span> <span class='id identifier rubyid_genre_id'>genre_id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_edit_movieResult'>edit_movieResult</span><span class='lbracket'>[</span><span class='symbol'>:status</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
     <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/titles</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
@@ -1394,9 +1414,9 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>Model#register_user</li>
+      <li><span class='object_link'><a href="Model.html#register_user-instance_method" title="Model#register_user (method)">Model#register_user</a></span></li>
     
-      <li>Model#checkTime</li>
+      <li><span class='object_link'><a href="Model.html#checkTime-instance_method" title="Model#checkTime (method)">Model#checkTime</a></span></li>
     
   </ul>
 
@@ -1408,7 +1428,6 @@
       <pre class="lines">
 
 
-137
 138
 139
 140
@@ -1430,17 +1449,18 @@
 156
 157
 158
-159</pre>
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 138</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/users/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span>
     <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_logTime'>logTime</span> <span class='op'>=</span>  <span class='id identifier rubyid_checkTime'>checkTime</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_logTime'>logTime</span> <span class='op'>=</span>  <span class='id identifier rubyid_checkTime'><span class='object_link'><a href="Model.html#checkTime-instance_method" title="Model#checkTime (method)">checkTime</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   
   <span class='kw'>if</span> <span class='id identifier rubyid_logTime'>logTime</span>
@@ -1448,7 +1468,7 @@
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:password</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_password_confirm'>password_confirm</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:password_confirm</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_registerResult'>registerResult</span> <span class='op'>=</span> <span class='id identifier rubyid_register_user'>register_user</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='id identifier rubyid_password_confirm'>password_confirm</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_registerResult'>registerResult</span> <span class='op'>=</span> <span class='id identifier rubyid_register_user'><span class='object_link'><a href="Model.html#register_user-instance_method" title="Model#register_user (method)">register_user</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='id identifier rubyid_password_confirm'>password_confirm</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_registerResult'>registerResult</span><span class='lbracket'>[</span><span class='symbol'>:status</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
       <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span> 
@@ -1468,7 +1488,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed May 11 14:59:57 2022 by
+  Generated on Thu May 12 11:39:44 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.27 (ruby-3.0.3).
 </div>
